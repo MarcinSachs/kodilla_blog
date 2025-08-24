@@ -1,25 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>
-    Add new post
-</h3>
+<div class="container">
+    <h3>{% if entry_id %}Edit Post{% else %}Add New Post{% endif %}</h3>
 
-<form action="" method="POST">
-    {{form.hidden_tag()}}
-    <div class="form-group">
-        <label for="title">Title</label>
-        {{ form.title(class_="form-control") }}
-    </div>
-    <div class="form-group">
-        <label for="body">Body</label>
-        {{ form.body(class_="form-control", cols="100", rows="20") }}
-    </div>
-    <div class="form-check">
-        {{ form.is_published(class_="form-check-input") }}
-        <label class="form-check-label" for="is_published">Publish post</label>
-    </div>
-    <button type="submit" class="btn btn-primary mt-5">Save</button>
-</form>
+    <form action="" method="POST" class="needs-validation" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="title">Title</label>
+            {{ form.title(class_="form-control", id="title", required=True) }}
+            <div class="invalid-feedback">Please enter a title.</div>
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            {{ form.body(class_="form-control", id="body", rows="10", required=True) }}
+            <div class="invalid-feedback">Please enter the post content.</div>
+        </div>
+        <div class="form-check">
+            {{ form.is_published(class_="form-check-input", id="is_published") }}
+            <label class="form-check-label" for="is_published">Publish post</label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+    </form>
+</div>
 
+<script>
+    // Self-executing function
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 {% endblock %}

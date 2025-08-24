@@ -2,33 +2,108 @@ body {
     padding-top: 5rem;
 }
 
-.post-container {
-    margin-bottom: 20px;
-    /* Dodaj trochę odstępu między postami */
+/* Zmienne CSS */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+}
+
+/* Ogólne style */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-gray);
+    color: #333;
+}
+
+.container {
+    max-width: 960px;
+    /* Dostosuj szerokość */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style postów */
+.card {
+    border: none;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 1.5rem;
 }
 
 .post-title {
     display: flex;
-    /* Włącza flexbox */
-    align-items: center;
-    /* Wyśrodkowuje elementy w pionie */
     justify-content: space-between;
-    /* Umieszcza pierwszy element po lewej, a ostatni po prawej */
+    align-items: center;
 }
 
-.post-title h2 {
-    margin: 0;
-    /* Usuwa domyślny margines h2 */
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--dark-gray);
 }
 
-.post-title a {
+.card-subtitle {
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.edit-link {
+    color: var(--primary-color);
     text-decoration: none;
-    /* Usuwa podkreślenie z linku */
-    color: #007bff;
-    /* Ustawia kolor linku (opcjonalnie) */
 }
 
-.post-title i {
-    margin-left: 5px;
-    /* Dodaje odstęp między ikoną a tytułem (opcjonalnie) */
+.edit-link:hover {
+    color: #0069d9;
+}
+
+/* Style przycisków */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* Style formularzy */
+.form-control {
+    border-radius: 0.25rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
 }

@@ -1,0 +1,34 @@
+body {
+    padding-top: 5rem;
+}
+
+.post-container {
+    margin-bottom: 20px;
+    /* Dodaj trochę odstępu między postami */
+}
+
+.post-title {
+    display: flex;
+    /* Włącza flexbox */
+    align-items: center;
+    /* Wyśrodkowuje elementy w pionie */
+    justify-content: space-between;
+    /* Umieszcza pierwszy element po lewej, a ostatni po prawej */
+}
+
+.post-title h2 {
+    margin: 0;
+    /* Usuwa domyślny margines h2 */
+}
+
+.post-title a {
+    text-decoration: none;
+    /* Usuwa podkreślenie z linku */
+    color: #007bff;
+    /* Ustawia kolor linku (opcjonalnie) */
+}
+
+.post-title i {
+    margin-left: 5px;
+    /* Dodaje odstęp między ikoną a tytułem (opcjonalnie) */
+}

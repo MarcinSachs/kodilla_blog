@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for post in all_posts %}
+
+<div class="post-container">
+    <div class="post-title">
+        <h2>{{ post.title }}</h2>
+        <a href="{{ url_for('create_or_edit_entry', entry_id=post.id) }}"><i class='bx bxs-edit'></i></a>
+    </div>
+    <p>{{ post.pub_date.strftime('%Y-%m-%d') }}</p>
+    <p>
+        {{ post.body}}
+    </p>
+</div>
+
+{% endfor %}
+{% endblock %}

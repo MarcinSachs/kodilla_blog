@@ -24,6 +24,14 @@ def index():
     return render_template("homepage.html", all_posts=all_posts)
 
 
+@app.route("/drafts/")
+@login_required
+def list_drafts():
+    all_posts = Entry.query.filter_by(
+        is_published=False).order_by(Entry.pub_date.desc())
+    return render_template("drafts.html", all_posts=all_posts)
+
+
 @app.route("/new-post", methods=["GET", "POST"])
 @app.route("/edit-post/<int:entry_id>", methods=["GET", "POST"])
 @login_required
@@ -54,6 +62,19 @@ def create_or_edit_entry(entry_id=None):
         return redirect(url_for("index"))
     # Przekazujemy entry_id do szablonu
     return render_template("entry_form.html", form=form, entry_id=entry_id)
+
+
+@app.route("/delete-post/<int:entry_id>", methods=["POST"])
+@login_required
+def delete_entry(entry_id):
+    entry = Entry.query.get_or_404(entry_id)
+    if entry is None:
+        flash("Post not found.", "error")
+    else:
+        db.session.delete(entry)
+        db.session.commit()
+        flash("Post deleted successfully!", "success")
+    return redirect(url_for("list_drafts"))
 
 
 @app.route("/login/", methods=['GET', 'POST'])

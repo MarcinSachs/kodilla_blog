@@ -31,6 +31,9 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page"
                         href="{{ url_for('create_or_edit_entry') }}"><i class='bx bxs-comment-add'></i> New Post</a>
                 </li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page"
+                        href="{{ url_for('list_drafts') }}"><i class='bx bx-notepad'></i> Drafts</a>
+                </li>
             </ul>
             {% if session.logged_in %}
             <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">

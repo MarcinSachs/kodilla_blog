@@ -6,7 +6,7 @@ Projekt prostego bloga zbudowanego przy użyciu Flaska. Umożliwia tworzenie, ed
 
 ## Screenshot
 
-[screenshot](screenshot.png)
+![screenshot.png](screenshot.png)
 
 ## Live Demo
 

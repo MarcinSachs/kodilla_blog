@@ -32,6 +32,15 @@
                         href="{{ url_for('create_or_edit_entry') }}"><i class='bx bxs-comment-add'></i> New Post</a>
                 </li>
             </ul>
+            {% if session.logged_in %}
+            <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class='bx bxs-log-out'></i> Log
+                    out</button>
+            </form>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-secondary my-2 my-lg-0"><i class='bx bxs-log-in'></i> Log
+                in</a>
+            {% endif %}
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>

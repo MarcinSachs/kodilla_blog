@@ -7,8 +7,10 @@
         <div class="card-body">
             <div class="post-title">
                 <h2 class="card-title">{{ post.title }}</h2>
+                {% if session.logged_in %}
                 <a href="{{ url_for('create_or_edit_entry', entry_id=post.id) }}"
                     class="btn btn-sm btn-outline-primary"><i class='bx bxs-edit'></i></a>
+                {% endif %}
             </div>
             <h6 class="card-subtitle mb-2 text-muted">{{ post.pub_date.strftime('%Y-%m-%d') }}</h6>
             <p class="card-text">{{ post.body }}</p>
